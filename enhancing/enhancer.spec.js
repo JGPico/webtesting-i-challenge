@@ -66,4 +66,24 @@ describe('enhancer.js', function(){
             expect(failItem.enhancement).toBe(0);
         });
     });
+
+    describe('get()', function(){
+        it("Should change the name to have a plus value equal to the enhancement level", 
+        function(){
+            const item = {
+                name: "Stick",
+                durability: 4,
+                enhancement: 0
+            }
+            const midItem = {
+                name: "Stick of Whacking",
+                durability: 20,
+                enhancement: 4
+            }
+            let gotItem = enhancer.get(item);
+            let gotMidItem = enhancer.get(midItem);
+            expect(gotItem.name).not.toContain('[+0]');
+            expect(gotMidItem.name).toContain('[+4]');
+        });
+    });
 });
